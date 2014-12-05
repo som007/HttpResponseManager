@@ -22,7 +22,14 @@ namespace HttpResponseManager.Common
         /// </returns>
         public async Task<string> POST(string url, string content, Dictionary<string, string> header)
         {
-            return await WebApiPostResponse(url, content, header);
+            try
+            {
+                return await WebApiPostResponse(url, content, header);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -41,7 +48,7 @@ namespace HttpResponseManager.Common
             }
             catch (Exception ex)
             {
-                return "";
+                throw ex;
             }
         }
 
@@ -54,7 +61,14 @@ namespace HttpResponseManager.Common
         /// </returns>
         public async Task<string> GET(string url)
         {
-            return await WebApiGetResponse(url);
+            try
+            {
+                return await WebApiGetResponse(url);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -67,7 +81,14 @@ namespace HttpResponseManager.Common
         /// </returns>
         public async Task<string> POST(string url, string content)
         {
-            return await WebApiPostResponse(url, content);
+            try
+            {
+                return await WebApiPostResponse(url, content);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -79,7 +100,14 @@ namespace HttpResponseManager.Common
         /// </returns>
         public async Task<string> GET(string url, Dictionary<string, string> header)
         {
-            return await WebApiGetResponse(url, header);
+            try
+            {
+                return await WebApiGetResponse(url, header);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
 
@@ -102,7 +130,7 @@ namespace HttpResponseManager.Common
             }
             catch (Exception ex)
             {
-                return "";
+                throw ex;
             }
         }
 
@@ -117,7 +145,7 @@ namespace HttpResponseManager.Common
             }
             catch (Exception ex)
             {
-                return "";
+                throw ex;
             }
         }
 
@@ -140,7 +168,7 @@ namespace HttpResponseManager.Common
             }
             catch (Exception ex)
             {
-                return "";
+                throw ex;
             }
         }
 
@@ -174,7 +202,7 @@ namespace HttpResponseManager.Common
             }
             catch (Exception ex)
             {
-                return "";
+                throw ex;
             }
         }
 
@@ -188,7 +216,7 @@ namespace HttpResponseManager.Common
             }
             catch (Exception ex)
             {
-                return "";
+                throw ex;
             }
         }
     }

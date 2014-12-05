@@ -84,6 +84,52 @@ namespace HttpResponseManager.Common
             }
         }
 
+        /// <summary>
+        /// Gets the URL response.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="methodType">Type of the method.</param>
+        /// <param name="url">The URL.</param>
+        /// <param name="data">The data.</param>
+        /// <param name="header">The header.</param>
+        /// <returns></returns>
+        public async Task<T> GetUrlResponse<T>(HttpRequestMethod methodType, string url, string data)
+        {
+            string response = "";
+            try
+            {
+                switch (methodType)
+                {
+                    case HttpRequestMethod.Get:
+                        response = await _servicecall.GET(url);
+                        break;
+                    case HttpRequestMethod.Post:
+                        response = await _servicecall.POST(url, data);
+                        break;
+                    case HttpRequestMethod.URL:
+                        response = await _servicecall.UrlResponse(url);
+                        break;
+                    case HttpRequestMethod.GetWithHeaders:
+                        throw new Exception("Method does not support Header.");
+                        //response = await _servicecall.GET(url, null);
+                        break;
+                    case HttpRequestMethod.PostWithHeaders:
+                        throw new Exception("Method does not support Header.");
+                        //response = await _servicecall.POST(url, data, null);
+                        break;
+                    default:
+                        response = "";
+                        break;
+                }
+
+                return JsonConvert.DeserializeObject<T>(response);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         /// <summary>
         /// Tests the specified data.
