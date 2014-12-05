@@ -80,7 +80,7 @@ namespace HttpResponseManager.Common
             }
             catch (Exception ex)
             {
-                return default(T);
+                throw ex;
             }
         }
 
