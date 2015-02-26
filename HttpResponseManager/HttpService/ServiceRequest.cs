@@ -75,8 +75,7 @@ namespace HttpResponseManager.Common
                         response = "";
                         break;
                 }
-
-                return JsonConvert.DeserializeObject<T>("{" + response + "}");
+                return JsonConvert.DeserializeObject<T>(response);
             }
             catch (Exception ex)
             {
